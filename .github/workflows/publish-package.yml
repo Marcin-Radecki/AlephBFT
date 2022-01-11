@@ -10,7 +10,7 @@ jobs:
     # need to rename environment name after this is merged
     environment: Autobump version
     runs-on: ubuntu-latest
-    if: ${{ github.repository == 'Cardinal-Cryptography/AlephBFT'}}
+    #if: ${{ github.repository == 'Cardinal-Cryptography/AlephBFT'}}
     steps:
       - name: checkout
         uses: actions/checkout@v2
