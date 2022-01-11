@@ -9,7 +9,6 @@ jobs:
   autobump:
     environment: Autobump version
     runs-on: ubuntu-latest
-    if: ${{ github.repository == 'Cardinal-Cryptography/AlephBFT'}}
     steps:
       - name: checkout
         uses: actions/checkout@v2
@@ -33,10 +32,6 @@ jobs:
             touch publishMe
             exit 0
           fi
-          if [ -e `git diff HEAD~ -- src/` ]; then
-            echo 'No changes in code.'
-            exit 0
-          fi
           new_version=$major_version.$minor_version.$((patch_version + 1))
           sed -i "s/^version = \"$version\"$/version = \"$new_version\"/" Cargo.toml
           git add Cargo.toml
@@ -53,5 +48,5 @@ jobs:
       - name: publish
         run: |
           if [ -f publishMe ]; then
-            cargo publish
+            echo 'cargo publish'
           fi
