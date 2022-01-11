@@ -31,3 +31,4 @@ readme_minor_version=$(get_minor_version "${readme_version}")
 
 check_versions "${cargo_toml_major_version}" "${readme_major_version}" "major"
 check_versions "${cargo_toml_minor_version}" "${readme_minor_version}" "minor"
+echo "Versions from README and Cargo.toml match."

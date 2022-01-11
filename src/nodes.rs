@@ -26,6 +26,7 @@ impl Decode for NodeIndex {
     }
 }
 
+
 /// Node count. Right now it doubles as node weight in many places in the code, in the future we
 /// might need a new type for that.
 #[derive(
