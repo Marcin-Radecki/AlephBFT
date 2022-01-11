@@ -2,7 +2,7 @@
 
 set -e
 
-if [ -e "$(git diff HEAD~ -- src/)" ]; then
+if [ -z "$(git diff HEAD origin/main -- src/)" ]; then
   echo "No changes in the code."
   exit 0
 fi
