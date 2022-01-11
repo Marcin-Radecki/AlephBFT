@@ -1,0 +1,38 @@
+name: Check version bumped
+
+on:
+  pull_request:
+    branches:
+    - main
+
+jobs:
+  autobump:
+    environment: Check version bumped
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 2
+      - name: check-cargo-toml-version-bumped
+        run: |
+          if ! git diff HEAD~ -- Cargo.toml | grep -q '^+version ='; then
+            echo "Current comit does not have changed version in Cargo.toml"
+            exit 1
+          fi
+      - name: cargo-toml-match-readme-version
+        run: |
+          cargo_toml_version=`grep -e '^version =' Cargo.toml | sed 's/version = //' | sed 's/"//g'`
+          cargo_toml_major_version=`echo $version|grep -o -e '^[0-9]*'`
+          cargo_toml_minor_version=`echo $version|grep -o -e '^[0-9]*.[0-9]*'|grep -o -e '[0-9]*$'`
+          readme_version=`grep -e 'aleph-bft =' README.md | cut -d "=" -f 2 | tr -d "\"^ "`
+          readme_major_version=`echo $version | grep -o -e '^[0-9]*'`
+          readme_minor_version=`echo $version | grep -o -e '^[0-9]*.[0-9]*'|grep -o -e '[0-9]*$'`
+          if [ "${cargo_toml_major_version}" != "${readme_major_version}" ]; then
+            echo "aleph-bft cargo's toml major versions different than README.md's major version!"
+            exit 1
+          fi
+          if [ "${cargo_toml_minor_version}" != "${readme_minor_version}" ]; then
+            echo "aleph-bft cargo's toml minor versions different than README.md's minor version!"
+            exit 1
+          fi
