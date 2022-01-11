@@ -17,6 +17,7 @@ impl Encode for NodeIndex {
     }
 }
 
+
 impl Decode for NodeIndex {
     fn decode<I: Input>(value: &mut I) -> Result<Self, Error> {
         let mut arr = [0u8; 8];
