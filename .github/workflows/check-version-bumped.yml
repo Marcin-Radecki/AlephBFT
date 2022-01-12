@@ -17,7 +17,7 @@ jobs:
           fetch-depth: 0
       - name: check-cargo-toml-version-bumped
         run: |
-          if [ "$(git diff HEAD origin/main -- Cargo.toml | grep -q '^+version =')" ]; then
+          if ! git diff HEAD origin/main -- Cargo.toml | grep -q '^+version ='; then
             echo "None of commits in this PR has changed version in Cargo.toml!"
             exit 1
           fi
