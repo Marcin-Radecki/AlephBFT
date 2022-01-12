@@ -30,6 +30,7 @@ impl UnitCoord {
     }
 }
 
+
 /// Combined hashes of the parents of a unit together with the set of indices of creators of the
 /// parents
 #[derive(Clone, Debug, PartialEq, Eq, Hash, Encode, Decode)]
