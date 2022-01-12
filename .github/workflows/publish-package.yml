@@ -28,7 +28,7 @@ jobs:
 #          args: ${{ secrets.CRATES_IO_TOKEN }}
       - name: publish
         run: |
-          if ! git diff HEAD~ -- Cargo.toml | grep -q '^+version ='; then
+          if git diff HEAD~ -- Cargo.toml | grep -q '^+version ='; then
             echo "Version in Cargo.toml was bumped in this PR, publishing to crates.io."
             # cargo publish
           fi
