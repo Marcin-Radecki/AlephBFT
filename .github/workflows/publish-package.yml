@@ -34,5 +34,5 @@ jobs:
         run: |
           if [ -f publishMe ]; then
             echo "Publishing to cargo.io"
-            cargo publish
+            # cargo publish
           fi
