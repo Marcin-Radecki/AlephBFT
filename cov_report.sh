@@ -8,3 +8,4 @@ cargo cov -- show \
     --object target/debug/deps/aleph_bft-coverage \
     --show-instantiations --show-line-counts-or-regions \
     --Xdemangler=rustfilt | less -R
+
