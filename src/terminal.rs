@@ -19,6 +19,7 @@ pub enum UnitStatus {
     InDag,
 }
 
+
 /// A Unit struct used in the Terminal. It stores a copy of a unit and apart from that some
 /// information on its status, i.e., already reconstructed parents etc.
 #[derive(Clone, PartialEq)]
