@@ -204,5 +204,3 @@ The implementation in this repository is funded by [Aleph Zero Foundation][webpa
 [old-paper-link]: https://arxiv.org/abs/1810.05256
 [aleph-node-link]: https://github.com/Cardinal-Cryptography/aleph-node
 [webpage-link]: https://alephzero.org
-
-
